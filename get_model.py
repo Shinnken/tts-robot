@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import os
 import sys
 from pathlib import Path
 from typing import Dict
@@ -80,8 +79,11 @@ def ensure_language_model(language: str) -> Path:
 	model_dir = BASE_DIR / language / model_info["model_name"]
 	model_dir.mkdir(parents=True, exist_ok=True)
 
+	model_path: Path | None = None
 	for filename, url in model_info["files"].items():
 		file_path = model_dir / filename
+		if filename.endswith(".onnx"):
+			model_path = file_path
 		if file_path.exists() and file_path.stat().st_size > 0:
 			print(f"✓ Found {file_path}")
 			continue
@@ -93,7 +95,10 @@ def ensure_language_model(language: str) -> Path:
 		download_file(url, file_path)
 		print(f"✓ Saved to {file_path}")
 
-	return file_path
+	if model_path is None:
+		raise SystemExit("No .onnx model file configured for this language.")
+
+	return model_path
 
 
 def parse_args() -> argparse.Namespace:
