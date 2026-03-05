@@ -10,7 +10,7 @@ SOX_CMD_1 = ["sox", "-t", "wav", "-", "-t", "wav", "-", "flanger", "10", "2", "r
 SOX_CMD_2 = ["sox", "-t", "wav", "-", "-t", "wav", "-", "pitch", "-400", "speed", "0.9", "reverb", "50", "75"] # Deep Ominous Robot (Pitch & Reverb)
 
 APLAY_CMD = ["aplay"]
-MODEL_PATH = ensure_language_model("en")  # Ensure English model is downloaded
+MODEL_PATH = ensure_language_model("pl")  # Ensure Polish model is downloaded
 
 
 def synthesize_wav_bytes(voice: PiperVoice, text: str) -> bytes:
