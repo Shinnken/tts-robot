@@ -7,7 +7,7 @@ from get_model import ensure_language_model
 
 # sox -t wav - -t wav - pitch -800 speed 0.9 reverb 50 75
 SOX_CMD_1 = ["sox", "-t", "wav", "-", "-t", "wav", "-", "flanger", "10", "2", "reverb", "25", "50"] # High-Pitched Droid (Pitch & Overdrive)
-SOX_CMD_2 = ["sox", "-t", "wav", "-", "-t", "wav", "-", "pitch", "-800", "speed", "0.9", "reverb", "50", "75"] # Deep Ominous Robot (Pitch & Reverb)
+SOX_CMD_2 = ["sox", "-t", "wav", "-", "-t", "wav", "-", "pitch", "-400", "speed", "0.9", "reverb", "50", "75"] # Deep Ominous Robot (Pitch & Reverb)
 
 APLAY_CMD = ["aplay"]
 MODEL_PATH = ensure_language_model("en")  # Ensure English model is downloaded
